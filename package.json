@@ -1,0 +1,27 @@
+{
+  "name": "taskman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node src/server.ts"
+  },
+  "types": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.17.1",
+    "redis": "^5.10.0",
+    "ts-node": "^10.9.2",
+    "winston": "^3.19.0"
+  }
+}
