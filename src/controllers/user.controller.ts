@@ -2,37 +2,31 @@ import { Request, Response } from 'express';
 import { UserService } from '../services/user.service';
 import logger from '../utils/logging';
 
-const userService = new UserService();
-
-export const getUser = async (req: Request, res: Response) => {
-
+export const getUser = (userService = new UserService()) => async (req: Request, res: Response) => {
   try {
-
-    const id = Number(req.body.id);
+    const id = Number(req.body.id); 
 
     const user = await userService.getUser(id);
 
     if (!user) {
 
-      logger.error("GetUser error:500")
+      logger.error("GetUser error:500");
 
-      return res.status(500).json({ success: false })
+      return res.status(500).json({ success: false });
 
     }
 
-    res.json(user);
+    res.status(200).json(user);
+  } catch (error) {
 
-} catch (error) {
+    logger.error("Internal server error");
+    
+    return res.status(500).json({ message: "Server error", error });
 
-  logger.error("Internal server error")
-
-  return res.status(500).json({ message: "Server error" , error})
-  
-}
-
+  }
 };
 
-export const createUser = async (req: Request, res: Response) => {
+export const createUser = (userService = new UserService()) => async (req: Request, res: Response) => {
 
   try {
 
@@ -59,7 +53,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 };
 
-export const userLogin = async (req: Request, res: Response ) => {
+export const userLogin = (userService = new UserService()) => async (req: Request, res: Response ) => {
 
   try {
     const { email, password } = req.body;

@@ -2,9 +2,7 @@ import { Request, Response } from 'express';
 import { CommentService } from '../services/comment.service';
 import logger from '../utils/logging';
 
-const commentService = new CommentService();
-
-export const getComments = async (req: Request, res: Response) => {
+export const getComments = (commentService = new CommentService()) => async (req: Request, res: Response) => {
 
 try {
 
@@ -33,7 +31,7 @@ try {
 
 };
 
-export const createComment = async (req: Request, res: Response) => {
+export const createComment = (commentService = new CommentService()) => async (req: Request, res: Response) => {
 
 try {
 

@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import { ProjectService } from "../services/project.service";
 import logger from "../utils/logging";
 
-const projectService = new ProjectService();
-
-export const getProject = async (req: Request, res: Response ) => {
+export const getProject = (projectService = new ProjectService()) => async (req: Request, res: Response ) => {
 
 try {
 
@@ -32,7 +30,7 @@ try {
 
 }
 
-export const createProject = async ( req: Request, res: Response) => {
+export const createProject = (projectService = new ProjectService()) => async ( req: Request, res: Response) => {
 
 try {
 

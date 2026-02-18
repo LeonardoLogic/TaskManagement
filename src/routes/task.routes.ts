@@ -3,7 +3,7 @@ import { getTask, createTask } from '../controllers/task.controller';
 
 const router = Router();
 
-router.get('/getTask', getTask);
+router.get('/getTask', getTask());
 
 router.post('/createTask', createTask);
 

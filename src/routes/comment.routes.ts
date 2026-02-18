@@ -4,8 +4,8 @@ import { createComment, getComments } from '../controllers/comment.controller';
 
 const router = Router();
 
-router.get('/getTaskComments', getComments);
+router.get('/getTaskComments', getComments());
 
-router.post('/createComment', createComment);
+router.post('/createComment', createComment());
 
 export default router;

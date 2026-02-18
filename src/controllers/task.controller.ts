@@ -2,9 +2,7 @@ import { Request, Response } from 'express';
 import { TaskService } from '../services/task.service';
 import logger from '../utils/logging';
 
-const taskService = new TaskService();
-
-export const getTask = async (req: Request, res: Response) => {
+export const getTask = (taskService = new TaskService()) => async (req: Request, res: Response) => {
 
 try {
   const id = Number(req.body.id);
@@ -19,7 +17,7 @@ try {
 
   }
 
-  res.json(task);
+  res.status(200).json(task);
 } catch (error) {
 
   logger.error("Internal server error")
@@ -29,7 +27,7 @@ try {
 }
 };
 
-export const createTask = async (req: Request, res: Response) => {
+export const createTask = (taskService = new TaskService()) => async (req: Request, res: Response) => {
 
 try {
   const { name, description, projectID, status } = req.body;
